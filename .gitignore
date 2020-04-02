@@ -1,0 +1,8 @@
+.vscode
+
+.build
+.serverless
+node_modules
+
+logs
+*.log*

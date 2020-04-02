@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "rootDir": "./",
+    "outDir": ".build",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "target": "es5",
+    "lib": [
+      "es2015"
+    ]
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modues"]
+}

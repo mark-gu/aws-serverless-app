@@ -1,0 +1,45 @@
+service: aws-serverless-app
+
+frameworkVersion: '>=1.0.0 <2.0.0'
+
+provider:
+  # Serverless.yml Reference: https://serverless.com/framework/docs/providers/aws/guide/serverless.yml/
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'ap-southeast-2'}
+  logRetentionInDays: 14
+  iamManagedPolicies:
+    - arn:aws:iam::aws:policy/AWSXrayWriteOnlyAccess
+
+custom:
+  var:
+    cors: ${self:custom.vars.${self:provider.stage}.cors, self:custom.vars.default.cors}
+    cors_origin: ${self:custom.vars.${self:provider.stage}.cors_origin, self:custom.vars.default.cors_origin}
+    cors_headers: ${self:custom.vars.${self:provider.stage}.cors_headers, self:custom.vars.default.cors_headers}
+  vars:
+    default:
+      cors: true
+      cors_origin: "'*'"
+      cors_headers: "'*'"
+
+functions:
+  express:
+    handler: src/app.lambdaHandler
+    events:
+      - http:
+          path: /
+          method: ANY
+          cors: ${self:custom.var.cors}
+          # authorizer: authorizerFunc
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: ${self:custom.var.cors}
+          # authorizer: authorizerFunc
+
+plugins:
+  - serverless-pseudo-parameters
+  - serverless-plugin-typescript
+  - serverless-plugin-tracing
+  # - serverless-offline
