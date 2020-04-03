@@ -1,11 +1,11 @@
 import express from "express";
+import * as Utils from "../common/utils";
 import HealthService from "../services/healthService";
 
 const api = express.Router();
 
-api.get("/health/ping", (req, res) => {
-  const healthService = new HealthService();
-  res.json(healthService.ping());
-});
+api.get("/health/ping", Utils.invokeAsync(async (context) => {
+  return await new HealthService().ping();
+}));
 
 export = api;
