@@ -1,11 +1,11 @@
-import moment from "moment";
-import _ from "lodash";
+import moment from 'moment';
+import _ from 'lodash';
 
 class HealthService {
-  public ping(): Promise<{ status: string, timestamp: string}> {
+  public ping(): Promise<{ status: string; timestamp: string }> {
     return Promise.resolve({
-      status: "OK",
-      timestamp: moment().format()
+      status: 'OK',
+      timestamp: moment().format(),
     });
   }
 }

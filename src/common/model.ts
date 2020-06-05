@@ -1,4 +1,4 @@
-import * as ExpressModel from "express-serve-static-core";
+import * as ExpressModel from 'express-serve-static-core';
 
 export interface IHttpContext {
   req: ExpressModel.Request;
@@ -6,4 +6,4 @@ export interface IHttpContext {
   next: ExpressModel.NextFunction;
 }
 
-export * from "express-serve-static-core";
+export * from 'express-serve-static-core';
