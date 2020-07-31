@@ -6,4 +6,10 @@ export interface IHttpContext {
   next: ExpressModel.NextFunction;
 }
 
+export interface IHttpErrorInfo extends Error {
+  statusCode: number;
+  clientMessage?: string;
+  serverMessage?: string;
+}
+
 export * from 'express-serve-static-core';

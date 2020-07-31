@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
     "moduleResolution": "node",
     "rootDir": "./",
     "outDir": ".build",
@@ -10,7 +11,7 @@
     "strictNullChecks": true,
     "target": "es5",
     "lib": [
-      "es2015"
+      "es2018"
     ]
   },
   "include": ["src/**/*.ts"],

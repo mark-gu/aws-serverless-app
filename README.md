@@ -14,7 +14,15 @@ Install project dependencies:
 npm install
 ```
 
-## Deployment
+## Deployment: Local
+
+```bash
+tsc
+node .\.build\src\app.local.js
+```
+
+
+## Deployment: Remote
 
 Obtain an AWS IAM User access key or temporary security credentials, and add it to the `credentials` files on your local machine, which is normally under the `<UserProfile>/.aws/` directory.
 

@@ -1,4 +1,5 @@
-service: aws-serverless-app
+service:
+  name: aws-serverless-app
 
 frameworkVersion: '>=1.0.0 <2.0.0'
 
@@ -29,12 +30,12 @@ functions:
     events:
       - http:
           path: /
-          method: ANY
+          method: any
           cors: ${self:custom.var.cors}
           # authorizer: authorizerFunc
       - http:
           path: /{proxy+}
-          method: ANY
+          method: any
           cors: ${self:custom.var.cors}
           # authorizer: authorizerFunc
 
